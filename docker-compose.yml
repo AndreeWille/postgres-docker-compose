@@ -1,0 +1,13 @@
+version: "3"
+
+services:
+  db:
+    image: "postgres:16"
+    environment:
+      POSTGRES_PASSWORD: "postgrespw"
+    volumes:
+      - "./postgres/postgres.conf:/usr/local/etc/postgres/postgres.conf"
+      - "./postgres/data:/var/lib/postgresql/data:delegated"
+    command: "postgres -c config_file=/usr/local/etc/postgres/postgres.conf"
+    ports:
+      - "5432:5432"
